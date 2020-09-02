@@ -8,23 +8,22 @@ import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
 
 public class JSONLogEventListenerProviderFactory implements EventListenerProviderFactory {
+    private static final String JSONLOG_PREFIX_ENV_VAR = "KEYCLOAK_JSONLOG_PREFIX";
+    private static String PREFIX = "JSON_EVENT::";
+
     private Logger logger = Logger.getLogger(JSONLogEventListenerProvider.class.getPackage().getName());
-
-    private static final String jsonlog_prefix_env_var = "KEYCLOAK_JSONLOG_PREFIX";
-
-    String prefix = "JSON_EVENT::";
 
     @Override
     public EventListenerProvider create(KeycloakSession session) {
 
-        return new JSONLogEventListenerProvider(session, logger, prefix);
+        return new JSONLogEventListenerProvider(session, logger, PREFIX);
     }
 
     @Override
     public void init(Config.Scope scope) {
-        String env_prefix = System.getenv(jsonlog_prefix_env_var);
+        String env_prefix = System.getenv(JSONLOG_PREFIX_ENV_VAR);
         if (env_prefix != null) {
-            prefix = env_prefix;
+            PREFIX = env_prefix;
         }
     }
 
