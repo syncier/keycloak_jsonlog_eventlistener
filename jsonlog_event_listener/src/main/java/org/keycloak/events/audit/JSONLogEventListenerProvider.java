@@ -1,25 +1,22 @@
-package uk.me.neon.jsonlogeventlistenerprovider.provider;
+package org.keycloak.events.audit;
 
 import org.jboss.logging.Logger;
 import org.keycloak.events.Event;
 import org.keycloak.events.EventListenerProvider;
 import org.keycloak.events.admin.AdminEvent;
-import org.keycloak.models.KeycloakContext;
 import org.keycloak.models.KeycloakSession;
-import org.keycloak.sessions.AuthenticationSessionModel;
 
 import java.util.Map;
 import javax.json.*;
 
 public class JSONLogEventListenerProvider implements EventListenerProvider {
+    private Logger logger = Logger.getLogger(JSONLogEventListenerProvider.class.getPackage().getName());
 
     KeycloakSession session;
-    Logger logger;
     String prefix;
 
     public JSONLogEventListenerProvider(KeycloakSession session, Logger logger, String prefix) {
         this.session = session;
-        this.logger = logger;
         this.prefix = prefix;
     }
 

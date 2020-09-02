@@ -1,4 +1,4 @@
-package uk.me.neon.jsonlogeventlistenerprovider.provider;
+package org.keycloak.events.audit;
 
 import org.jboss.logging.Logger;
 import org.keycloak.Config;
