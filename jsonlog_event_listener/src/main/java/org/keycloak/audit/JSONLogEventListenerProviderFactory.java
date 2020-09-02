@@ -1,4 +1,4 @@
-package org.keycloak.events.audit;
+package org.keycloak.audit;
 
 import org.jboss.logging.Logger;
 import org.keycloak.Config;
@@ -7,13 +7,8 @@ import org.keycloak.events.EventListenerProviderFactory;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
 
-
-
 public class JSONLogEventListenerProviderFactory implements EventListenerProviderFactory {
-
-    public static final String ID = "jboss-logging";
-
-    private static final Logger logger = Logger.getLogger("org.keycloak.events");
+    private Logger logger = Logger.getLogger(JSONLogEventListenerProvider.class.getPackage().getName());
 
     private static final String jsonlog_prefix_env_var = "KEYCLOAK_JSONLOG_PREFIX";
 

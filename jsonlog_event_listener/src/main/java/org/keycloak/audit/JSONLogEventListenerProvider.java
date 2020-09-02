@@ -1,4 +1,4 @@
-package org.keycloak.events.audit;
+package org.keycloak.audit;
 
 import org.jboss.logging.Logger;
 import org.keycloak.events.Event;
@@ -10,13 +10,13 @@ import java.util.Map;
 import javax.json.*;
 
 public class JSONLogEventListenerProvider implements EventListenerProvider {
-    private Logger logger = Logger.getLogger(JSONLogEventListenerProvider.class.getPackage().getName());
-
     KeycloakSession session;
+    Logger logger;
     String prefix;
 
     public JSONLogEventListenerProvider(KeycloakSession session, Logger logger, String prefix) {
         this.session = session;
+        this.logger = logger;
         this.prefix = prefix;
     }
 

@@ -1,1 +1,1 @@
-org.keycloak.events.audit.JSONLogEventListenerProviderFactory
+org.keycloak.audit.JSONLogEventListenerProviderFactory
