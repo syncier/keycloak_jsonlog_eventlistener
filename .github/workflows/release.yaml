@@ -18,7 +18,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Maven
-        run: mvn -B package --file jsonlog_event_listener/pom.xml
+        run: mvn -B package --file jsonlog_event_listener/pom.xml 
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -30,4 +30,4 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            *.jar
+            jsonlog_event_listener/target/jsonlog-event-listener.jar
