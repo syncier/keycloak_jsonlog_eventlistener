@@ -1,7 +1,7 @@
 # How to make a release
 
 Create new tag and push it to repo. Release will be created automatically.
-Format for tag name is v*.*.*
+Format for tag name is `v*.*.*`
 
 # Keycloak JSON Log Eventlistener
 
