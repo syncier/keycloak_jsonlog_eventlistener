@@ -38,3 +38,4 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./target/jsonlog_event_listener/target/json-event-listener.jar
           asset_name: json-event-listener.jar
+          asset_content_type: application/java-archive
