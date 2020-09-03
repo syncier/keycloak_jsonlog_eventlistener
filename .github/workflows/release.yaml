@@ -36,6 +36,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./target/jsonlog_event_listener/target/json-event-listener.jar
+          asset_path: /home/runner/work/keycloak_jsonlog_eventlistener/keycloak_jsonlog_eventlistener/jsonlog_event_listener/target/jsonlog-event-listener.jar
           asset_name: json-event-listener.jar
           asset_content_type: application/java-archive
