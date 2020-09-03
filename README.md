@@ -1,4 +1,7 @@
-![Java CI](https://github.com/kill9zombie/keycloak_jsonlog_eventlistener/workflows/Java%20CI/badge.svg)
+# How to make a release
+
+Create new tag and push it to repo. Release will be created automatically.
+Format for tag name is v*.*.*
 
 # Keycloak JSON Log Eventlistener
 
