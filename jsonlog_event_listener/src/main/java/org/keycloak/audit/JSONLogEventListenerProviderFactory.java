@@ -7,23 +7,42 @@ import org.keycloak.events.EventListenerProviderFactory;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
 
-public class JSONLogEventListenerProviderFactory implements EventListenerProviderFactory {
-    private static final String JSONLOG_PREFIX_ENV_VAR = "KEYCLOAK_JSONLOG_PREFIX";
-    private static String PREFIX = "JSON_EVENT::";
 
-    private Logger logger = Logger.getLogger(JSONLogEventListenerProvider.class.getPackage().getName());
+
+public class JSONLogEventListenerProviderFactory implements EventListenerProviderFactory {
+
+    public static final String ID = "jboss-logging";
+
+    private static final Logger logger = Logger.getLogger("org.keycloak.events");
+
+    private static final String jsonlog_prefix_env_var = "KEYCLOAK_JSONLOG_PREFIX";
+    private static final String jsonlog_show_groups_env_var = "KEYCLOAK_JSONLOG_SHOW_GROUPS";
+    private static final String jsonlog_show_attributes_env_var = "KEYCLOAK_JSONLOG_SHOW_ATTRIBUTES";
+
+    String prefix = "JSON_EVENT::";
+    Boolean optShowGroups = false;
+    Boolean optShowAttributes = false;
 
     @Override
     public EventListenerProvider create(KeycloakSession session) {
-
-        return new JSONLogEventListenerProvider(session, logger, PREFIX);
+        return new JSONLogEventListenerProvider(session, logger, prefix, optShowGroups, optShowAttributes);
     }
 
     @Override
     public void init(Config.Scope scope) {
-        String env_prefix = System.getenv(JSONLOG_PREFIX_ENV_VAR);
+        String env_prefix = System.getenv(jsonlog_prefix_env_var);
+        String envShowGroups = System.getenv(jsonlog_show_groups_env_var);
+        String envShowAttributes = System.getenv(jsonlog_show_attributes_env_var);
         if (env_prefix != null) {
-            PREFIX = env_prefix;
+            prefix = env_prefix;
+        }
+
+        if (envShowGroups != null) {
+            this.optShowGroups = (envShowGroups.startsWith("true")) ? true : false;
+        }
+
+        if (envShowAttributes != null) {
+            this.optShowAttributes = (envShowAttributes.startsWith("true")) ? true : false;
         }
     }
 

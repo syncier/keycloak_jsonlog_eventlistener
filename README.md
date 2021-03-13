@@ -26,6 +26,16 @@ Once the event handler is enabled for the realm (in the admin console see Events
     16:30:11,662 INFO  [org.keycloak.events] (default task-6) FOO{"type":"ADMIN_EVENT","operationType":"CREATE","realmId":"master","clientId":"01b98c9f-a2c3-418a-9c5e-a766cd51c4a7","userId":"6f87b3d2-108f-4234-8fd2-9fdccf700fce","ipAddress":"172.17.0.1","resourceType":"USER","resourcePath":"users/633ff1ce-a695-4c07-a083-1af595a839e8"}
     16:30:18,063 INFO  [org.keycloak.events] (default task-8) FOO{"type":"ADMIN_EVENT","operationType":"ACTION","realmId":"master","clientId":"01b98c9f-a2c3-418a-9c5e-a766cd51c4a7","userId":"6f87b3d2-108f-4234-8fd2-9fdccf700fce","ipAddress":"172.17.0.1","resourceType":"USER","resourcePath":"users/633ff1ce-a695-4c07-a083-1af595a839e8/reset-password"}
 
+### Log user groups and attributes
+
+If you want to log user's attributes and/or groups, set:
+
+    KEYCLOAK_JSONLOG_SHOW_GROUPS="true"
+    KEYCLOAK_JSONLOG_SHOW_ATTRIBUTES="true"
+
+See above for activation with `docker run`, example output:
+
+    17:19:46,209 INFO  [org.keycloak.events] (default task-3) JSON_EVENT::{"type":"LOGIN","realmId":"myrealm","clientId":"test.client","userId":"10b2f010-6d87-4ece-aecd-61e7fe3bde3b","userGroups":["Group1"],"userAttributes":{"gender":["Other"],"grade":["example_grade"],"birth_year":["1998"]},"ipAddress":"192.168.3.3","auth_method":"openid-connect","auth_type":"code","redirect_uri":"https://test.app/oauth/callback","consent":"no_consent_required","code_id":"629888b4-49eb-4659-93da-32fc1ce73abd","username":"sam"}
 
 ## Examples
 
